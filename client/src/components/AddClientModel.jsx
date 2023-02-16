@@ -37,7 +37,7 @@ const AddClientModel = () => {
     <>
       <button
         type="button"
-        className="btn btn-secondary my-3"
+        className="btn btn-secondary mt-3"
         data-bs-toggle="modal"
         data-bs-target="#addClientModel">
         <div className="d-flex align-items-center">
