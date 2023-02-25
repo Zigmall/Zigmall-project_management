@@ -13,7 +13,7 @@ const ADD_PROJECT = gql`
       description
       status
       client {
-        id 
+        id
         name
         email
         phone
@@ -22,5 +22,12 @@ const ADD_PROJECT = gql`
   }
 `;
 
+const DELETE_PROJECT = gql`
+  mutation deleteProject($id: ID!) {
+    deleteProject(id: $id) {
+      id
+    }
+  }
+`;
 
-export { ADD_PROJECT };
+export { ADD_PROJECT, DELETE_PROJECT };

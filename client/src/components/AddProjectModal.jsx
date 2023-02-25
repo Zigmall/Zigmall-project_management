@@ -3,7 +3,7 @@ import { FaList } from 'react-icons/fa';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../queries/projectQueries';
 import { GET_CLIENTS } from '../queries/clientsQueries';
-import { ADD_PROJECT } from '../mutations/projectMutations';
+import { ADD_PROJECT } from '../mutations/projectMutations';  
 
 const AddClientModel = () => {
   const [name, setName] = useState('');
@@ -11,14 +11,24 @@ const AddClientModel = () => {
   const [clientId, setClientId] = useState('');
   const [status, setStatus] = useState('new');
 
+  const [addProject] = useMutation(ADD_PROJECT, {
+    variables: {
+      name,
+      description,
+      clientId,
+      status,
+    },
+    refetchQueries: [{ query: GET_PROJECTS }],
+  });
+
   const { data: clientsData, loading: clientsLoading, error: clientsError } = useQuery(GET_CLIENTS);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === '' || description === '' || status === '') {
+    if (name === '' || description === '' || status === ''|| clientId === '') {
       return alert('Please fill all fields');
     }
-    // addClient();
+    addProject(name, description, clientId, status);
     setName('');
     setDescription('');
     setClientId('');
@@ -88,7 +98,7 @@ const AddClientModel = () => {
                         value={status}
                         onChange={(e) => setStatus(e.target.value)}>
                         <option value="new">New</option>
-                        <option value=" progress">In Progress</option>
+                        <option value="progress">In Progress</option>
                         <option value="completed">Completed</option>
                       </select>
                     </div>
