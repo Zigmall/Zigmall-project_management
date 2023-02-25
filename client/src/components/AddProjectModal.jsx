@@ -3,6 +3,7 @@ import { FaList } from 'react-icons/fa';
 import { useMutation, useQuery } from '@apollo/client';
 import { GET_PROJECTS } from '../queries/projectQueries';
 import { GET_CLIENTS } from '../queries/clientsQueries';
+import { ADD_PROJECT } from '../mutations/projectMutations';
 
 const AddClientModel = () => {
   const [name, setName] = useState('');
