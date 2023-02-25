@@ -32,7 +32,7 @@ const AddClientModel = () => {
     setName('');
     setDescription('');
     setClientId('');
-    setStatus('new ');
+    setStatus('new');
   };
 
   if (clientsLoading) return null;
